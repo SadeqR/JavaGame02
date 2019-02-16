@@ -7,8 +7,10 @@ public class Screen {
 	private int width;
 	private int height;
 	public int[] pixels;
+	public final int MAP_SIZE = 8;
+	public final int MAP_SIZE_MASK = 8-1;
 	
-	public int[] tiles = new int[64*64];
+	public int[] tiles = new int[MAP_SIZE*MAP_SIZE];
 	
 	private Random random = new Random();
 	
@@ -17,7 +19,7 @@ public class Screen {
 		 this.height = height;
 		 pixels = new int[width*height];
 		 
-		 for(int i = 0; i<64*64; i++) {
+		 for(int i = 0; i<MAP_SIZE*MAP_SIZE; i++) {
 			 tiles[i] = random.nextInt(0xffffff);
 		 }
 		 
@@ -31,10 +33,12 @@ public class Screen {
 	
 	public void render() {
 		for(int y=0; y < height; y++) {
-			if(y<0 || y>=height) break;
+			int yy = y;
+		//	if(yy<0 || yy>=height) break;
 			for(int x=0; x< width; x++) {
-				if(x<0 || x>= width) break;
-				int tileIndex = (x/16) + ((y/16) * 64);
+				int xx = x;
+		//		if(xx<0 || xx>= width) break;
+				int tileIndex = ((xx/16) & MAP_SIZE_MASK) + (((yy/16) & MAP_SIZE_MASK)* MAP_SIZE);
 				pixels[x + (y*width)] = tiles[tileIndex];
 			}
 		}
