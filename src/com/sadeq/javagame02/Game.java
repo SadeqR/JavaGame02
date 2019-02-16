@@ -15,6 +15,7 @@ import com.sadeq.javagame02.graphics.Screen;
 public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
 	
+	public static String title = "JavaeGame02";
 	public static int width = 300;
 	public static int height = width / 16* 9;
 	public static int scale = 3;
@@ -59,18 +60,30 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	public void run() {
+		long timer = System.currentTimeMillis();
 		long lastTime = System.nanoTime();
-		final double ns = 100000000.0 / 60.0;
+		final double ns = 1000000000.0 / 60.0;
 		double delta = 0;
+		int frames = 0;
+		int updates = 0;
 		while (running) {
 			long now = System.nanoTime();
 			delta += (now - lastTime)/ns;
 			lastTime = now;
 			while(delta>=1) {
 				update();
+				updates++;
 				delta--;
 			}
 			render();
+			frames++;
+			if(System.currentTimeMillis() - timer > 1000) {
+				timer += 1000;
+				//System.out.println(updates + " ups, " + frames + " fps");
+				frame.setTitle(title + "  |  " + updates + " ups, " + frames + " fps");
+				updates = 0;
+				frames = 0;
+			}
 		}
 		stop();
 	}
