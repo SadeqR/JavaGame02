@@ -92,7 +92,7 @@ public class Game extends Canvas implements Runnable {
 	
 	public void update() {
 		x++;
-		//y++;
+		y++;
 	}
 	
 	public void render() {
