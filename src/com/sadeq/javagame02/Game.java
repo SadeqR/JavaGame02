@@ -10,8 +10,7 @@ import java.awt.image.DataBufferInt;
 import javax.swing.JFrame;
 
 import com.sadeq.javagame02.graphics.Screen;
-
-import input.Keyboard;
+import com.sadeq.javagame02.input.Keyboard;
 
 public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
@@ -71,6 +70,8 @@ public class Game extends Canvas implements Runnable {
 		double delta = 0;
 		int frames = 0;
 		int updates = 0;
+		//window no longer requires to be clicked upon loading
+		requestFocus();
 		while (running) {
 			long now = System.nanoTime();
 			delta += (now - lastTime)/ns;

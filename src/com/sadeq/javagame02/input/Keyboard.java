@@ -1,4 +1,4 @@
-package input;
+package com.sadeq.javagame02.input;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
