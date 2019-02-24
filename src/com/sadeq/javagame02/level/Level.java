@@ -4,8 +4,8 @@ import com.sadeq.javagame02.graphics.Screen;
 
 public class Level {
 	
-	private int width, height;
-	private int[] tiles;
+	protected int width, height;
+	protected int[] tiles;
 	
 	public Level(int width, int height) {
 		this.width = width;
@@ -18,7 +18,7 @@ public class Level {
 		loadLevel(path);
 	}
 
-	private void genereateLevel() {
+	protected void genereateLevel() {
 	}
 	
 	private void loadLevel(String path) {
