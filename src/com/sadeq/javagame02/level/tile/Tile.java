@@ -8,6 +8,9 @@ public class Tile {
 	public int x, y;
 	public Sprite sprite;
 	
+	//static because the grass sprite in constant/doesn't change
+	public static Tile grass = new GrassTile(Sprite.grass);
+	
 	public Tile(Sprite sprite) {
 		this.sprite = sprite;
 	}
