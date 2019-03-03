@@ -6,8 +6,8 @@ import com.sadeq.javagame02.level.tile.Tile;
 
 public class Screen {
 
-	private int width;
-	private int height;
+	public int width;
+	public int height;
 	public int[] pixels;
 	public final int MAP_SIZE = 8;
 	public final int MAP_SIZE_MASK = 8-1;

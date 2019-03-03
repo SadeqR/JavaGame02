@@ -32,6 +32,11 @@ public class Level {
 	}
 	
 	public void render(int xScroll, int yScroll, Screen screen) {
+		// >>4 same as /16; we do this to work with whole tiles not pixels
+		int x0 = xScroll >> 4;
+		int x1 = (xScroll + screen.width) >> 4;
+		int y0 = yScroll >> 4;
+		int y1 = (yScroll + screen.height) >> 4;
 	}
 	
 }
