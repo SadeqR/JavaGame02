@@ -10,6 +10,7 @@ public class Tile {
 	
 	//static because the grass sprite in constant/doesn't change
 	public static Tile grass = new GrassTile(Sprite.grass);
+	public static Tile voidTile = new VoidTile(Sprite.voidSprite);
 	
 	public Tile(Sprite sprite) {
 		this.sprite = sprite;
