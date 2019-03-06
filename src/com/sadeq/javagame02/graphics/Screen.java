@@ -6,14 +6,12 @@ import com.sadeq.javagame02.level.tile.Tile;
 
 public class Screen {
 
-	public int width;
-	public int height;
+	public int width, height;
 	public int[] pixels;
-	public final int MAP_SIZE = 8;
-	public final int MAP_SIZE_MASK = 8-1;
-	
+	public final int MAP_SIZE = 64;
+	public final int MAP_SIZE_MASK = MAP_SIZE - 1;
+	public int xOffset, yOffset;
 	public int[] tiles = new int[MAP_SIZE*MAP_SIZE];
-	
 	private Random random = new Random();
 	
 	public Screen (int width, int height) {
@@ -55,6 +53,11 @@ public class Screen {
 				pixels[xa+ya*width] = tile.sprite.pixels[x+y*tile.sprite.SIZE];
 			}
 		}
+	}
+	
+	public void setOffset(int xOffset, int yOffset) {
+		this.xOffset = xOffset;
+		this.yOffset = yOffset;
 	}
 	
 }
