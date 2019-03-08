@@ -11,6 +11,8 @@ import javax.swing.JFrame;
 
 import com.sadeq.javagame02.graphics.Screen;
 import com.sadeq.javagame02.input.Keyboard;
+import com.sadeq.javagame02.level.Level;
+import com.sadeq.javagame02.level.RandomLevel;
 
 public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
@@ -23,10 +25,9 @@ public class Game extends Canvas implements Runnable {
 	private Thread thread;
 	private JFrame frame;
 	private boolean running = false;
-	
 	private Keyboard key;
-	
 	private Screen screen;
+	private Level level;
 	
 	//an image to draw things onto
 	private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -42,6 +43,7 @@ public class Game extends Canvas implements Runnable {
 		screen = new Screen(width, height);
 		frame = new JFrame();
 		key = new Keyboard();
+		level = new RandomLevel(64, 64);
 		
 		addKeyListener(key);
 	}
@@ -111,7 +113,7 @@ public class Game extends Canvas implements Runnable {
 			return;
 		}
 		screen.clear(); //clearing previous rendered frame
-		screen.render(x,y);
+		level.render(x, y, screen);
 		
 		for(int i=0; i<pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
