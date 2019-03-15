@@ -1,7 +1,9 @@
 package com.sadeq.javagame02;
 
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -9,6 +11,7 @@ import java.awt.image.DataBufferInt;
 
 import javax.swing.JFrame;
 
+import com.sadeq.javagame02.entity.mob.Player;
 import com.sadeq.javagame02.graphics.Screen;
 import com.sadeq.javagame02.input.Keyboard;
 import com.sadeq.javagame02.level.Level;
@@ -28,6 +31,7 @@ public class Game extends Canvas implements Runnable {
 	private Keyboard key;
 	private Screen screen;
 	private Level level;
+	private Player player;
 	
 	//an image to draw things onto
 	private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -44,6 +48,7 @@ public class Game extends Canvas implements Runnable {
 		frame = new JFrame();
 		key = new Keyboard();
 		level = new RandomLevel(64, 64);
+		player = new Player(key);
 		
 		addKeyListener(key);
 	}
@@ -96,14 +101,16 @@ public class Game extends Canvas implements Runnable {
 		stop();
 	}
 	
-	int x=0, y=0;
+	//int x=0, y=0;
 	
 	public void update() {
 		key.update();
-		if(key.up) y--;
+		player.update();
+	/*	if(key.up) y--;
 		if(key.down) y++;
 		if(key.left) x--;
 		if(key.right) x++;
+	*/	
 	}
 	
 	public void render() {
@@ -113,7 +120,7 @@ public class Game extends Canvas implements Runnable {
 			return;
 		}
 		screen.clear(); //clearing previous rendered frame
-		level.render(x, y, screen);
+		level.render(player.x, player.y, screen);
 		
 		for(int i=0; i<pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
@@ -123,6 +130,9 @@ public class Game extends Canvas implements Runnable {
 //		g.setColor(Color.BLACK);
 //		g.fillRect(0, 0, getWidth(), getHeight());
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+		g.setColor(Color.WHITE);
+		g.setFont(new Font("Verdana", 0, 50));
+		g.drawString("X: " + player.x + ", Y: " + player.y, 450, 400);
 		g.dispose(); //remove the frame after rendering every frame
 		bs.show();
 	}
