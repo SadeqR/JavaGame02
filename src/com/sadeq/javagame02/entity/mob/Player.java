@@ -1,5 +1,7 @@
 package com.sadeq.javagame02.entity.mob;
 
+import com.sadeq.javagame02.graphics.Screen;
+import com.sadeq.javagame02.graphics.Sprite;
 import com.sadeq.javagame02.input.Keyboard;
 
 public class Player extends Mob {
@@ -26,7 +28,7 @@ public class Player extends Mob {
 		if(xa != 0 || ya != 0) move(xa, ya);
 	}
 	
-	public void render() {
-		
+	public void render(Screen screen) {
+		screen.renderPlayer(x, y, Sprite.player0);
 	}
 }

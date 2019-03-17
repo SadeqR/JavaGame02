@@ -120,7 +120,10 @@ public class Game extends Canvas implements Runnable {
 			return;
 		}
 		screen.clear(); //clearing previous rendered frame
-		level.render(player.x, player.y, screen);
+		int xScroll = player.x-screen.width /2;
+		int yScroll = player.y-screen.height /2;
+		level.render(xScroll, yScroll, screen);
+		player.render(screen);
 		
 		for(int i=0; i<pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
@@ -132,7 +135,7 @@ public class Game extends Canvas implements Runnable {
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("Verdana", 0, 50));
-		g.drawString("X: " + player.x + ", Y: " + player.y, 450, 400);
+//		g.drawString("X: " + player.x + ", Y: " + player.y, 450, 400);
 		g.dispose(); //remove the frame after rendering every frame
 		bs.show();
 	}
