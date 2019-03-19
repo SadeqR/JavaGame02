@@ -57,7 +57,9 @@ public class Screen {
 				int xa = x + xp;
 				if(xa < -16 || xa >= width || ya<0 || ya>=height) break;
 				if(xa < 0) xa = 0;
-				pixels[xa+ya*width] = sprite.pixels[x+y*16];
+				int col = sprite.pixels[x+y*16];
+				//for some reason alpha channel recognised so we added extra FF
+				if (col != 0xFFFF00FF) pixels[xa+ya*width] = col;
 			}
 		}
 	}
