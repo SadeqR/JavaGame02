@@ -13,7 +13,7 @@ public abstract class Mob extends Entity {
 		if(xa > 0) dir = 1;
 		if(xa < 0) dir = 3;
 		if(ya > 0) dir = 2;
-		if(ya > 0) dir = 0;
+		if(ya < 0) dir = 0;
 		
 		if(!collision()) {
 			x += xa;
