@@ -51,10 +51,35 @@ public class Player extends Mob {
 				}
 			}
 		}
-		if(dir == 1) sprite = Sprite.player_side;
-		if(dir == 2) sprite = Sprite.player_back;
+		if(dir == 1) {
+			sprite = Sprite.player_side;
+			if(walking) {
+				if(anim % 20 > 10) {
+					sprite = Sprite.player_side_1;
+				} else {
+					sprite = Sprite.player_side_2;
+				}
+			}
+		}
+		if(dir == 2) {
+			sprite = Sprite.player_back;
+			if(walking) {
+				if(anim % 20 > 10) {
+					sprite = Sprite.player_back_1;
+				} else {
+					sprite = Sprite.player_back_2;
+				}
+			}
+		}
 		if(dir == 3) {
 			sprite = Sprite.player_side;
+			if(walking) {
+				if(anim % 20 > 10) {
+					sprite = Sprite.player_side_1;
+				} else {
+					sprite = Sprite.player_side_2;
+				}
+			}
 			flip = 1;
 		}
 		screen.renderPlayer(x-16, y-16, sprite, flip);
