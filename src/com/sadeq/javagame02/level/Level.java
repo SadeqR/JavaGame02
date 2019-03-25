@@ -22,7 +22,7 @@ public class Level {
 	protected void genereateLevel() {
 	}
 	
-	private void loadLevel(String path) {
+	protected void loadLevel(String path) {
 	}
 	
 	//entities updated here
