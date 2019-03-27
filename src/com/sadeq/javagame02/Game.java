@@ -15,7 +15,7 @@ import com.sadeq.javagame02.entity.mob.Player;
 import com.sadeq.javagame02.graphics.Screen;
 import com.sadeq.javagame02.input.Keyboard;
 import com.sadeq.javagame02.level.Level;
-import com.sadeq.javagame02.level.RandomLevel;
+import com.sadeq.javagame02.level.SpawnLevel;
 
 public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
@@ -47,7 +47,7 @@ public class Game extends Canvas implements Runnable {
 		screen = new Screen(width, height);
 		frame = new JFrame();
 		key = new Keyboard();
-		level = new RandomLevel(64, 64);
+		level = new SpawnLevel("/textures/level.png");
 		player = new Player(key);
 		
 		addKeyListener(key);
