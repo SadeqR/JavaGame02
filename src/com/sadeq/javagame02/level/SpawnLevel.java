@@ -23,6 +23,7 @@ public class SpawnLevel extends Level {
 			tiles = new Tile[w * h];
 			levelPixels = new int[w * h];
 			image.getRGB(0, 0, w, h, levelPixels, 0, w);
+			generateLevel();
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.out.println("Exception! Could not load level file!");

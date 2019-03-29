@@ -13,7 +13,7 @@ public class Level {
 		this.width = width;
 		this.height = height;
 		tilesInt = new int[width * height];
-		genereateLevel();
+		//genereateLevel();
 	}
 	
 	public Level(String path) {
