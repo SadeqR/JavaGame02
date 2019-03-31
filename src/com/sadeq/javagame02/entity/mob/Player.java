@@ -11,16 +11,16 @@ public class Player extends Mob {
 	private int anim = 0;
 	private boolean walking = false;
 	
-	public Player(Keyboard input) {
+	public Player(int x, int y, Keyboard input) {
 		this.x = x;
 		this.y = y;
 		this.input = input;
 		sprite = Sprite.player_forward;
 	}
 	
-	public Player(int x, int y) {
-		this.x=x;
-		this.y=y;
+	public Player(Keyboard input) {
+		this.input = input;
+		sprite = Sprite.player_forward;
 	}
 	
 	public void update() {
