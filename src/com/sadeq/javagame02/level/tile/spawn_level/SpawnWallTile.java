@@ -14,5 +14,9 @@ public class SpawnWallTile extends Tile {
 		// converted to pixel precision
 		screen.renderTile(x<<4, y<<4, this);
 	}
+	
+	public boolean solid() {
+		return true;
+	}
 
 }
